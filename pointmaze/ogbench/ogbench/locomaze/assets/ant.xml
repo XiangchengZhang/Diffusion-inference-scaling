@@ -1,0 +1,96 @@
+<mujoco model="ant">
+    <compiler inertiafromgeom="true" angle="degree" coordinate="local"/>
+
+    <option timestep="0.02" integrator="RK4"/>
+
+    <custom>
+        <numeric name="init_qpos" data="0.0 0.0 0.55 1.0 0.0 0.0 0.0 0.0 1.0 0.0 -1.0 0.0 -1.0 0.0 1.0"/>
+    </custom>
+
+    <default>
+        <joint limited="true" armature="1" damping="1"/>
+        <geom condim="3" conaffinity="0" margin="0.01" friction="1 0.5 0.5" solref=".02 1" solimp=".8 .8 .01" density="5.0" material="self"/>
+    </default>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" width="100" height="100" rgb1="1 1 1" rgb2="0 0 0"/>
+        <texture name="grid" type="2d" builtin="checker" rgb1=".08 .11 .16" rgb2=".15 .18 .25" width="300" height="300"/>
+        <texture name="ball" builtin="checker" mark="cross" width="151" height="151" rgb1="0.1 0.1 0.1" rgb2="0.9 0.9 0.9" markrgb="1 1 1"/>
+        <texture name="teleport_in" type="2d" builtin="gradient" rgb1=".1 .1 .1" rgb2="0.35 0.55 0.91" width="300" height="300"/>
+        <texture name="teleport_out" type="2d" builtin="gradient" rgb1=".9 .9 .9" rgb2="0.35 0.55 0.91" width="300" height="300"/>
+        <material name="grid" texture="grid" texrepeat="1 1" texuniform="true"/>
+        <material name="self" rgba=".7 .5 .3 1"/>
+        <material name="self_white" rgba=".8 .8 .8 1"/>
+        <material name="wall" rgba="1 1 1 1"/>
+        <material name="ball" texture="ball"/>
+        <material name="target" rgba="0.96 0.26 0.33 1"/>
+        <material name="teleport_in" texture="teleport_in"/>
+        <material name="teleport_out" texture="teleport_out"/>
+    </asset>
+
+    <worldbody>
+        <light name="global" directional="true" cutoff="100" ambient=".2 .2 .2" exponent="1" diffuse="1 1 1" specular=".1 .1 .1" pos="0 0 1.3" dir="-0 0 -1.3"/>
+        <geom name="floor" type="plane" conaffinity="1" size="100 100 .2" material="grid"/>
+        <body name="torso" pos="0 0 0.75">
+            <camera name="back" pos="0 -2.5 5" xyaxes="1 0 0 0 2 1" mode="trackcom"/>
+            <geom name="torso_geom" type="sphere" size="0.25" pos="0 0 0"/>
+            <joint name="root" type="free" limited="false" pos="0 0 0" axis="0 0 1" margin="0.01" armature="0" damping="0"/>
+            <light name="torso_light" pos="0 0 8" mode="trackcom"/>
+            <body name="front_left_leg" pos="0 0 0">
+                <geom name="aux_1_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 0.2 0.2 0.0"/>
+                <body name="aux_1" pos="0.2 0.2 0">
+                    <joint name="hip_1" type="hinge" pos="0.0 0.0 0.0" axis="0 0 1" range="-30 30"/>
+                    <geom name="left_leg_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 0.2 0.2 0.0"/>
+                    <body pos="0.2 0.2 0">
+                        <joint name="ankle_1" type="hinge" pos="0.0 0.0 0.0" axis="-1 1 0" range="30 70"/>
+                        <geom name="left_ankle_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 0.4 0.4 0.0"/>
+                    </body>
+                </body>
+            </body>
+            <body name="front_right_leg" pos="0 0 0">
+                <geom name="aux_2_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 -0.2 0.2 0.0"/>
+                <body name="aux_2" pos="-0.2 0.2 0">
+                    <joint name="hip_2" type="hinge" pos="0.0 0.0 0.0" axis="0 0 1" range="-30 30"/>
+                    <geom name="right_leg_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 -0.2 0.2 0.0"/>
+                    <body pos="-0.2 0.2 0">
+                        <joint name="ankle_2" type="hinge" pos="0.0 0.0 0.0" axis="1 1 0" range="-70 -30"/>
+                        <geom name="right_ankle_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 -0.4 0.4 0.0"/>
+                    </body>
+                </body>
+            </body>
+            <body name="back_leg" pos="0 0 0">
+                <geom name="aux_3_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 -0.2 -0.2 0.0"/>
+                <body name="aux_3" pos="-0.2 -0.2 0">
+                    <joint name="hip_3" type="hinge" pos="0.0 0.0 0.0" axis="0 0 1" range="-30 30"/>
+                    <geom name="back_leg_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 -0.2 -0.2 0.0"/>
+                    <body pos="-0.2 -0.2 0">
+                        <joint name="ankle_3" type="hinge" pos="0.0 0.0 0.0" axis="-1 1 0" range="-70 -30"/>
+                        <geom name="third_ankle_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 -0.4 -0.4 0.0"/>
+                    </body>
+                </body>
+            </body>
+            <body name="right_back_leg" pos="0 0 0">
+                <geom name="aux_4_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 0.2 -0.2 0.0"/>
+                <body name="aux_4" pos="0.2 -0.2 0">
+                    <joint name="hip_4" type="hinge" pos="0.0 0.0 0.0" axis="0 0 1" range="-30 30"/>
+                    <geom name="rightback_leg_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 0.2 -0.2 0.0"/>
+                    <body pos="0.2 -0.2 0">
+                        <joint name="ankle_4" type="hinge" pos="0.0 0.0 0.0" axis="1 1 0" range="30 70"/>
+                        <geom name="fourth_ankle_geom" type="capsule" size="0.08" fromto="0.0 0.0 0.0 0.4 -0.4 0.0"/>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" joint="hip_4" gear="30"/>
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" joint="ankle_4" gear="30"/>
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" joint="hip_1" gear="30"/>
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" joint="ankle_1" gear="30"/>
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" joint="hip_2" gear="30"/>
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" joint="ankle_2" gear="30"/>
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" joint="hip_3" gear="30"/>
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" joint="ankle_3" gear="30"/>
+    </actuator>
+</mujoco>

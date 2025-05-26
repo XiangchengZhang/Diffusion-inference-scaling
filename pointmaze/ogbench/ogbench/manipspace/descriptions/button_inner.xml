@@ -1,0 +1,26 @@
+<mujoco model="button_inner">
+    <worldbody>
+        <body childclass="buttonbox_base" name="buttonbox_0" pos="0.58 -0.05 0.048" euler="-1.57 0 0">
+            <geom material="btn_black" mesh="stopbot" pos="0.0 -0.024 0.0"/>
+            <geom material="btn_metal" euler="1.57 0 0" mesh="stopbuttonrim" pos="0.0 -0.0356 0.0"/>
+            <geom material="btn_top" mesh="stoptop" pos="0.0 -0.024 0.0"/>
+
+            <geom class="buttonbox_col" pos="0.0 0.0048 0.0288" size="0.048 0.0408 0.0192" type="box"/>
+            <geom class="buttonbox_col" pos="0.0 0.0048 -0.0288" size="0.048 0.0408 0.0192" type="box"/>
+            <geom class="buttonbox_col" pos="-0.0292 0.0048 0.0" size="0.0188 0.0408 0.0096" type="box"/>
+            <geom class="buttonbox_col" pos="0.0292 0.0048 0.0" size="0.0188 0.0408 0.0096" type="box"/>
+            <site name="btntop_0" pos="0.0 -0.0774 0.0" group="5"/>
+
+            <body childclass="buttonbox_base" name="button_0">
+                <inertial pos="0.0 -0.0774 0.0" mass=".01" diaginertia="0.001 0.001 0.001"/>
+                <joint name="buttonbox_joint_0" pos="0.0 0.0 0.0" axis="0 -1 0" type="slide" springref=".5" limited="true" stiffness="0.5" range="-0.024 0.0" damping="1"/>
+                <geom material="btn_red" euler="1.57 0 0" mesh="stopbutton" pos="0.0 -0.0632 0.0" name="btngeom_0"/>
+                <geom material="btn_black" euler="1.57 0 0" mesh="stopbuttonrod" pos="0.0 -0.0504 0.0"/>
+
+                <geom class="buttonbox_col" euler="1.57 0 0" pos="0.0 -0.0512 0.0" size="0.0084 0.0156" type="cylinder"/>
+                <geom class="buttonbox_col" euler="1.57 0 0" pos="0.0 -0.0664 0.0" size="0.0172 0.0032" type="cylinder"/>
+                <geom class="buttonbox_col" euler="1.57 0 0" pos="0.0 -0.0732 0.0" size="0.0172 0.0044" type="cylinder"/>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>

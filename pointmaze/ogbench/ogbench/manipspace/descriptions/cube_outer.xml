@@ -1,0 +1,12 @@
+<mujoco model="cube_outer">
+    <default>
+        <default class="cube">
+            <geom type="box" size="0.02 0.02 0.02" rgba="0.96 0.26 0.33 1.0" density="1240" solref="0.004 1" contype="3"
+                  group="1"/>
+            <site type="sphere" size=".005" rgba="0 1 0 1" group="5"/>
+        </default>
+    </default>
+
+    <worldbody>
+    </worldbody>
+</mujoco>

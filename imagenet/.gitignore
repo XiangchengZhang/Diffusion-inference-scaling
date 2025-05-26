@@ -1,0 +1,16 @@
+*/__pycache__/
+.vscode/
+temp
+temp/
+wandb
+sweep_*
+__pycache__
+logs
+*.pth
+*.pt
+status/
+results/
+*.npy
+process*
+test*
+eval.py

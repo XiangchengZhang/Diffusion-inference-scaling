@@ -1,0 +1,52 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "ogbench"
+version = "1.1.2"
+requires-python = ">=3.8"
+dependencies = [
+    "mujoco >= 3.1.6",
+    "dm_control >= 1.0.20",
+    "gymnasium[mujoco]",
+]
+authors = [
+    { name = "Seohong Park" },
+    { name = "Kevin Frans" },
+    { name = "Benjamin Eysenbach" },
+    { name = "Sergey Levine" },
+]
+maintainers = [
+    { name = "Seohong Park", email = "seohong@berkeley.edu" }
+]
+license = { file = "LICENSE" }
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["description"]
+
+[project.optional-dependencies]
+train = [
+    "jax[cuda12] >= 0.4.26",
+    "flax >= 0.8.4",
+    "distrax >= 0.1.5",
+    "ml_collections",
+    "matplotlib",
+    "moviepy",
+    "wandb",
+]
+dev = [
+    "ruff",
+]
+all = [
+    "ogbench[train,dev]",
+]
+
+[project.urls]
+Home = "https://github.com/seohongpark/ogbench"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "single"

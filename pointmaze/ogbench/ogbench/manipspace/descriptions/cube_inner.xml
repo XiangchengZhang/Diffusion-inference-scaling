@@ -1,0 +1,12 @@
+<mujoco model="cube_inner">
+    <worldbody>
+        <body name="object_0" pos="0.3 0 .02">
+            <freejoint name="object_joint_0"/>
+            <geom name="object_0" class="cube"/>
+            <site name="com_0" group="5"/>
+        </body>
+        <body name="object_target_0" pos="0.45 0 .02" mocap="true">
+            <geom name="target_object_0" class="cube" rgba=".5 .5 .5 .2" contype="0" conaffinity="0"/>
+        </body>
+    </worldbody>
+</mujoco>

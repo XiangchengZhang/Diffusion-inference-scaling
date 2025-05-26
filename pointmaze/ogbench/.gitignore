@@ -1,0 +1,10 @@
+__pycache__/
+dist/
+*.py[cod]
+*$py.class
+*.egg-info/
+.DS_Store
+.idea/
+.ruff_cache/
+exp/
+*.npz

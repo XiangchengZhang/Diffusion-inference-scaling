@@ -1,0 +1,23 @@
+<mujoco>
+    <statistic center="0 0 0"/>
+
+    <visual>
+        <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
+    </visual>
+
+    <asset>
+        <texture name="grid" type="2d" builtin="checker" rgb1=".08 .11 .16" rgb2=".15 .18 .25" mark="cross" markrgb="0.8 0.8 0.8" width="512" height="512"/>
+        <material name="grid" texture="grid" texrepeat="1 1" texuniform="true"/>
+        <texture name="skybox" type="skybox" builtin="gradient" rgb1="0.15 0.18 0.25" rgb2="0 0 0" mark="random" markrgb="1 1 1" width="1024" height="1024" random="0.005"/>
+    </asset>
+
+    <worldbody>
+        <light name="global" pos="0 0 2" directional="true"/>
+        <light name="spotlight" pos="0.25 0 .5" dir="0 0 -1" cutoff="100" castshadow="false" diffuse="0.3 0.3 0.3"/>
+        <geom name="floor" size="1 1 0.01" type="plane" material="grid" group="1"/>
+        <geom name="wall_0" size="0.003 0.38 0.2" pos="0.22 0 0.1" type="box" rgba="0.5 0.5 0.5 0.1" contype="0" conaffinity="2" group="3"/>
+        <geom name="wall_1" size="0.205 0.003 0.2" pos="0.425 -0.38 0.1" type="box" rgba="0.5 0.5 0.5 0.1" contype="0" conaffinity="2" group="3"/>
+        <geom name="wall_2" size="0.003 0.38 0.2" pos="0.63 0 0.1" type="box" rgba="0.5 0.5 0.5 0.1" contype="0" conaffinity="2" group="3"/>
+        <geom name="wall_3" size="0.205 0.003 0.2" pos="0.425 0.38 0.1" type="box" rgba="0.5 0.5 0.5 0.1" contype="0" conaffinity="2" group="3"/>
+    </worldbody>
+</mujoco>

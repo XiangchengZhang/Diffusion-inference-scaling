@@ -1,0 +1,537 @@
+from gymnasium.envs.registration import register
+
+visual_dict = dict(
+    ob_type='pixels',
+    render_mode='rgb_array',
+    width=64,
+    height=64,
+    camera_name='back',
+)
+singletask_dict = dict(
+    add_noise_to_goal=False,
+)
+
+# Environments for offline goal-conditioned RL.
+register(
+    id='pointmaze-medium-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='point',
+        maze_env_type='maze',
+        maze_type='medium',
+    ),
+)
+register(
+    id='pointmaze-large-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='point',
+        maze_env_type='maze',
+        maze_type='large',
+    ),
+)
+register(
+    id='pointmaze-giant-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='point',
+        maze_env_type='maze',
+        maze_type='giant',
+    ),
+)
+register(
+    id='pointmaze-teleport-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='point',
+        maze_env_type='maze',
+        maze_type='teleport',
+    ),
+)
+register(
+    id='pointmaze-ultra-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=3000,
+    kwargs=dict(
+        loco_env_type='point',
+        maze_env_type='maze',
+        maze_type='ultra',
+    ),
+)
+
+
+register(
+    id='antmaze-medium-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='maze',
+        maze_type='medium',
+    ),
+)
+register(
+    id='visual-antmaze-medium-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='maze',
+        maze_type='medium',
+        **visual_dict,
+    ),
+)
+register(
+    id='antmaze-large-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='maze',
+        maze_type='large',
+    ),
+)
+register(
+    id='visual-antmaze-large-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='maze',
+        maze_type='large',
+        **visual_dict,
+    ),
+)
+register(
+    id='antmaze-giant-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='maze',
+        maze_type='giant',
+    ),
+)
+register(
+    id='visual-antmaze-giant-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='maze',
+        maze_type='giant',
+        **visual_dict,
+    ),
+)
+register(
+    id='antmaze-teleport-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='maze',
+        maze_type='teleport',
+    ),
+)
+register(
+    id='visual-antmaze-teleport-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='maze',
+        maze_type='teleport',
+        **visual_dict,
+    ),
+)
+
+register(
+    id='humanoidmaze-medium-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=2000,
+    kwargs=dict(
+        loco_env_type='humanoid',
+        maze_env_type='maze',
+        maze_type='medium',
+    ),
+)
+register(
+    id='visual-humanoidmaze-medium-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=2000,
+    kwargs=dict(
+        loco_env_type='humanoid',
+        maze_env_type='maze',
+        maze_type='medium',
+        **visual_dict,
+    ),
+)
+register(
+    id='humanoidmaze-large-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=2000,
+    kwargs=dict(
+        loco_env_type='humanoid',
+        maze_env_type='maze',
+        maze_type='large',
+    ),
+)
+register(
+    id='visual-humanoidmaze-large-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=2000,
+    kwargs=dict(
+        loco_env_type='humanoid',
+        maze_env_type='maze',
+        maze_type='large',
+        **visual_dict,
+    ),
+)
+register(
+    id='humanoidmaze-giant-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=4000,
+    kwargs=dict(
+        loco_env_type='humanoid',
+        maze_env_type='maze',
+        maze_type='giant',
+    ),
+)
+register(
+    id='visual-humanoidmaze-giant-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=4000,
+    kwargs=dict(
+        loco_env_type='humanoid',
+        maze_env_type='maze',
+        maze_type='giant',
+        **visual_dict,
+    ),
+)
+register(
+    id='humanoidmaze-teleport-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=2000,
+    kwargs=dict(
+        loco_env_type='humanoid',
+        maze_env_type='maze',
+        maze_type='teleport',
+    ),
+)
+register(
+    id='visual-humanoidmaze-teleport-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=2000,
+    kwargs=dict(
+        loco_env_type='humanoid',
+        maze_env_type='maze',
+        maze_type='teleport',
+        **visual_dict,
+    ),
+)
+
+register(
+    id='antsoccer-arena-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='ball',
+        maze_type='arena',
+    ),
+)
+register(
+    id='antsoccer-medium-v0',
+    entry_point='ogbench.locomaze.maze:make_maze_env',
+    max_episode_steps=1000,
+    kwargs=dict(
+        loco_env_type='ant',
+        maze_env_type='ball',
+        maze_type='medium',
+    ),
+)
+
+# Environments for reward-based single-task offline RL.
+for task_id in [None, 1, 2, 3, 4, 5]:
+    task_suffix = '' if task_id is None else f'-task{task_id}'
+    reward_task_id = 0 if task_id is None else task_id  # 0 means the default task.
+
+    register(
+        id=f'pointmaze-medium-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='point',
+            maze_env_type='maze',
+            maze_type='medium',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'pointmaze-large-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='point',
+            maze_env_type='maze',
+            maze_type='large',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'pointmaze-giant-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='point',
+            maze_env_type='maze',
+            maze_type='giant',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'pointmaze-teleport-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='point',
+            maze_env_type='maze',
+            maze_type='teleport',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+
+    register(
+        id=f'antmaze-medium-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='maze',
+            maze_type='medium',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'visual-antmaze-medium-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='maze',
+            maze_type='medium',
+            **visual_dict,
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'antmaze-large-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='maze',
+            maze_type='large',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'visual-antmaze-large-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='maze',
+            maze_type='large',
+            **visual_dict,
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'antmaze-giant-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='maze',
+            maze_type='giant',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'visual-antmaze-giant-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='maze',
+            maze_type='giant',
+            **visual_dict,
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'antmaze-teleport-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='maze',
+            maze_type='teleport',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'visual-antmaze-teleport-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='maze',
+            maze_type='teleport',
+            **visual_dict,
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+
+    register(
+        id=f'humanoidmaze-medium-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=2000,
+        kwargs=dict(
+            loco_env_type='humanoid',
+            maze_env_type='maze',
+            maze_type='medium',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'visual-humanoidmaze-medium-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=2000,
+        kwargs=dict(
+            loco_env_type='humanoid',
+            maze_env_type='maze',
+            maze_type='medium',
+            **visual_dict,
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'humanoidmaze-large-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=2000,
+        kwargs=dict(
+            loco_env_type='humanoid',
+            maze_env_type='maze',
+            maze_type='large',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'visual-humanoidmaze-large-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=2000,
+        kwargs=dict(
+            loco_env_type='humanoid',
+            maze_env_type='maze',
+            maze_type='large',
+            **visual_dict,
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'humanoidmaze-giant-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=4000,
+        kwargs=dict(
+            loco_env_type='humanoid',
+            maze_env_type='maze',
+            maze_type='giant',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'visual-humanoidmaze-giant-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=4000,
+        kwargs=dict(
+            loco_env_type='humanoid',
+            maze_env_type='maze',
+            maze_type='giant',
+            **visual_dict,
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'humanoidmaze-teleport-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=2000,
+        kwargs=dict(
+            loco_env_type='humanoid',
+            maze_env_type='maze',
+            maze_type='teleport',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'visual-humanoidmaze-teleport-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=2000,
+        kwargs=dict(
+            loco_env_type='humanoid',
+            maze_env_type='maze',
+            maze_type='teleport',
+            **visual_dict,
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+
+    register(
+        id=f'antsoccer-arena-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='ball',
+            maze_type='arena',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
+    register(
+        id=f'antsoccer-medium-singletask{task_suffix}-v0',
+        entry_point='ogbench.locomaze.maze:make_maze_env',
+        max_episode_steps=1000,
+        kwargs=dict(
+            loco_env_type='ant',
+            maze_env_type='ball',
+            maze_type='medium',
+            reward_task_id=reward_task_id,
+            **singletask_dict,
+        ),
+    )
