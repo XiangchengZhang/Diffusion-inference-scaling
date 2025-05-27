@@ -31,7 +31,7 @@ def get_args(args: Arguments) -> List[Arguments]:
         args.sampling_horizon = 600
         if args.method == 'bon':
             args.temp = 0.0
-            for particles in [4, 8, 16, 32]:
+            for particles in [4, 8, 16, ]:
                 cur_args = deepcopy(args)
                 cur_args.per_sample_batch_size = particles
                 args_grid.append(cur_args)
@@ -41,7 +41,7 @@ def get_args(args: Arguments) -> List[Arguments]:
             args.temp_schedule = 'increase'
             args.start_step = 4
             args.step_size = 4
-            for particles in [4, 8, 16, 32]:
+            for particles in [4, 8, 16, ]:
                 cur_args = deepcopy(args)
                 cur_args.per_sample_batch_size = particles
                 args_grid.append(cur_args)
@@ -68,17 +68,17 @@ def get_args(args: Arguments) -> List[Arguments]:
         args.sampling_horizon = 2800
         if args.method == 'bon':
             args.temp = 0.0
-            for particles in [4, 8, 16, 32]:
+            for particles in [8, 16, 32]:
                 cur_args = deepcopy(args)
                 cur_args.per_sample_batch_size = particles
                 args_grid.append(cur_args)
             return args_grid
         if 'bfs' in args.method:
-            args.temp = 0.001 
+            args.temp = 0.005
             args.temp_schedule = 'increase'
             args.start_step = 4
             args.step_size = 4
-            for particles in [4, 8, 16, 32]:
+            for particles in [16, 32]:
                 cur_args = deepcopy(args)
                 cur_args.per_sample_batch_size = particles
                 args_grid.append(cur_args)
@@ -90,7 +90,7 @@ def get_args(args: Arguments) -> List[Arguments]:
             args.threshold_schedule = 'increase'
             args.threshold = 400
             args.recur_depth = 5
-            for budget in [8, 16, 32]:
+            for budget in [16, 32]:
                 cur_args = deepcopy(args)
                 cur_args.budget = budget
                 args_grid.append(cur_args)
