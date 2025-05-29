@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository provide the implementation of [**Inference-time Scaling of Diffusion Models through Classical Search**](https://diffusion-inference-scaling.github.io/). The approach leverages classical search algorithms to scale inference compute in diffusion models, improving efficiency and output quality.
+This repository provides the implementation of [**Inference-time Scaling of Diffusion Models through Classical Search**](https://diffusion-inference-scaling.github.io/). The approach leverages classical search algorithms to scale inference compute in diffusion models, improving efficiency and output quality.
 
 ## Implementation
 The `imagenet` folder provides the implementation of BFS for class-conditional image generation, the `locomotion` folder provides the Q-verifier test-time search for offline RL tasks, and the `pointmaze` folder provides the implementation of the long-horizon planning task. For installation of each task, refer to the instructions in each subfolder.
