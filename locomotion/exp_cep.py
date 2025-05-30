@@ -41,7 +41,7 @@ env = gym.make(args.env)
 # env.action_space.seed(args.seed)
 # torch.manual_seed(args.seed)
 # np.random.seed(args.seed)
-args.eval_func = functools.partial(pallaral_eval_policy, env_name=args.env, seed=args.seed, eval_episodes=args.seed_per_evaluation, diffusion_steps=args.diffusion_steps)
+# args.eval_func = functools.partial(pallaral_eval_policy, env_name=args.env, seed=args.seed, eval_episodes=args.seed_per_evaluation, diffusion_steps=args.diffusion_steps)
 state_dim = env.observation_space.shape[0]
 action_dim = env.action_space.shape[0]
 max_action = float(env.action_space.high[0])
