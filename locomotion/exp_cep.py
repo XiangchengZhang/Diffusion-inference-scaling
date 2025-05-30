@@ -66,6 +66,7 @@ for guidance_scale in args.s:
         torch.manual_seed(args.seed)
         np.random.seed(args.seed)
         score_model.q[0].guidance_scale = guidance_scale
+        args.eval_func = functools.partial(pallaral_eval_policy, env_name=args.env, seed=args.seed, eval_episodes=args.seed_per_evaluation, diffusion_steps=args.diffusion_steps)
         envs = args.eval_func(score_model.select_actions)
         mean = np.mean([envs[i].buffer_return for i in range(args.seed_per_evaluation)])
         std = np.std([envs[i].buffer_return for i in range(args.seed_per_evaluation)])
